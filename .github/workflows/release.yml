@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - DEVOPS-NPM-registry-test
+      - master
 
 jobs:
   release:

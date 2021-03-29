@@ -20,7 +20,10 @@
     "release": "semantic-release"
   },
   "release": {
-    "branch": "master",
+    "branches": [
+      "master",
+      {"name": "natlex", "prerelease": true},
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/changelog",

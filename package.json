@@ -22,7 +22,7 @@
   "release": {
     "branches": [
       {"name": "master"},
-      {"name": "natlex", "channel": "natlex", "prerelease": "natlex"},
+      {"name": "natlex", "channel": "natlex", "prerelease": "natlex"}
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",

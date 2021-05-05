@@ -781,12 +781,12 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
                     this.itemsList.select(this.itemsList.mapItem(val, null));
                 } else if (this.bindValue) {
                     const selectItemWithLabelFn = (itemValue: any, itemLabel: string) => {
-                        const item = {
+                        const selectedItem = {
                             [this.bindLabel]: itemLabel,
                             [this.bindValue]: itemValue,
                         };
 
-                        this.itemsList.select(this.itemsList.mapItem(item, null));
+                        this.itemsList.select(this.itemsList.mapItem(selectedItem, null));
                     };
 
                     const label = this.getMissingItemLabelFn(val);

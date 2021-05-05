@@ -780,10 +780,10 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
                 if ((isValObject || isPrimitive)) {
                     this.itemsList.select(this.itemsList.mapItem(val, null));
                 } else if (this.bindValue) {
-                    const selectItemWithLabelFn = (val: any, label: string) => {
+                    const selectItemWithLabelFn = (itemValue: any, itemLabel: string) => {
                         const item = {
-                            [this.bindLabel]: label,
-                            [this.bindValue]: val,
+                            [this.bindLabel]: itemLabel,
+                            [this.bindValue]: itemValue,
                         };
 
                         this.itemsList.select(this.itemsList.mapItem(item, null));
@@ -795,11 +795,10 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
                         label.pipe(
                             take(1),
                             takeUntil(this._destroy$),
-                            tap(label => selectItemWithLabelFn(val, label)),
+                            tap(resolvedLabel => selectItemWithLabelFn(val, resolvedLabel)),
                         )
                         .subscribe();
-                    }
-                    else {
+                    } else {
                         selectItemWithLabelFn(val, label);
                     }
                 }

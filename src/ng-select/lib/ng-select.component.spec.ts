@@ -4281,11 +4281,11 @@ describe('NgSelectComponent', () => {
 
         const labelText = 'Vilnius';
 
-        function checkLabel(getMissingItemLabelFn: () => string | Observable<string>, shouldCheckText: boolean, delay: number): void {
+        function checkLabel(getMissingItemLabelFn: () => string | Observable<string>, shouldCheckText: boolean, delayBeforeCheck: number): void {
             select.getMissingItemLabelFn = getMissingItemLabelFn;
 
             fixture.detectChanges();
-            tick(delay);
+            tick(delayBeforeCheck);
             fixture.detectChanges();
 
             const labelElement = fixture.debugElement
@@ -4295,7 +4295,9 @@ describe('NgSelectComponent', () => {
 
             expect(labelElement).toBeDefined();
 
-            if (shouldCheckText) expect(labelElement.innerText).toBe(labelText);
+            if (shouldCheckText) {
+                expect(labelElement.innerText).toBe(labelText);
+            }
         };
 
         it('should work with async function', fakeAsync(() => {

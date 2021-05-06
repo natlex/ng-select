@@ -4281,7 +4281,10 @@ describe('NgSelectComponent', () => {
 
         const labelText = 'Vilnius';
 
-        function checkLabel(getMissingItemLabelFn: () => string | Observable<string>, shouldCheckText: boolean, delayBeforeCheck: number): void {
+        function checkLabel(
+            getMissingItemLabelFn: () => string | Observable<string>,
+            shouldCheckText: boolean,
+            delayBeforeCheck: number): void {
             select.getMissingItemLabelFn = getMissingItemLabelFn;
 
             fixture.detectChanges();

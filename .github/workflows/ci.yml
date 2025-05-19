@@ -25,7 +25,9 @@ jobs:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run lint
-        run: yarn lint
+        run: |
+          yarn install
+          yarn add eslint --dev
         env:
           NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

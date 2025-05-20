@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
@@ -21,25 +23,17 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run lint
         run: |
-          yarn install
           yarn add eslint --dev
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          yarn lint
 
       - name: Run tests
         run: yarn test:ci
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: yarn build:demo
-        env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Coveralls
         uses: coverallsapp/github-action@v1

@@ -11,19 +11,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'latest'
+          node-version: '20'
 
       - name: Install dependencies
         run: yarn install
 
       - name: Run lint
-        run: yarn lint
+        run: |
+          yarn add eslint --dev
+          yarn lint
 
       - name: Run tests
         run: yarn test:ci

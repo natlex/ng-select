@@ -626,7 +626,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, OnInit, AfterVie
 		}
 
 		if (this._editableSearchTerm) {
-			this._setSearchTermFromItems();
+			this.setSearchTermFromItems();
 		}
 	}
 
@@ -759,7 +759,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, OnInit, AfterVie
 		}
 
 		if (this._editableSearchTerm) {
-			this._setSearchTermFromItems();
+			this.setSearchTermFromItems();
 		}
 
 		this.element.classList.add('ng-select-focused');
@@ -774,7 +774,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, OnInit, AfterVie
 			this._onTouched();
 		}
 		if (this._editableSearchTerm) {
-			this._setSearchTermFromItems();
+			this.setSearchTermFromItems();
 		}
 		this.focused = false;
 	}
@@ -801,7 +801,7 @@ export class NgSelectComponent implements OnDestroy, OnChanges, OnInit, AfterVie
 
 	private _onTouched = () => {};
 
-	private _setSearchTermFromItems() {
+	setSearchTermFromItems() {
 		const selected = this.selectedItems?.[0];
 		this.searchTerm = selected?.label ?? null;
 	}

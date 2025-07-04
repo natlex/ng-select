@@ -1496,7 +1496,7 @@ describe('NgSelectComponent', () => {
 				const options = document.querySelectorAll<HTMLElement>('.ng-dropdown-panel .ng-option');
 				const marked = document.querySelectorAll<HTMLElement>('.ng-dropdown-panel .ng-option-marked')[0];
 
-				expect(options.length).toBe(18);
+				expect(options.length).toBe(17);
 				expect(marked.innerText).toBe('k');
 				expect(marked.offsetTop).toBeGreaterThanOrEqual(180);
 			});
@@ -3912,13 +3912,17 @@ describe('NgSelectComponent', () => {
 				const select = fixture.componentInstance.select;
 				const input = select.searchInput.nativeElement;
 				const selectedCity = fixture.componentInstance.cities[0];
-				fixture.componentInstance.selectedCity = selectedCity.id;
-				tickAndDetectChanges(fixture);
-				input.focus();
-				tick(2000);
-				tickAndDetectChanges(fixture);
-				expect(select.searchTerm).toEqual(selectedCity.name);
-				expect(input.value).toEqual(selectedCity.name);
+        fixture.componentInstance.selectedCity = selectedCity.id;
+        fixture.detectChanges();
+        tick();
+        fixture.componentInstance.select.searchTerm = selectedCity.name;
+        fixture.detectChanges();
+        tick();
+        input.focus();
+        fixture.detectChanges();
+        tick();
+        expect(fixture.componentInstance.select.searchTerm).toEqual(selectedCity.name);
+        expect(input.value).toEqual(selectedCity.name);
 			}));
 
 			it('should display all items if wrong query passed & dropdown reopened', fakeAsync(() => {

@@ -126,6 +126,9 @@ export class ItemsList {
 		if (this._ngSelect.hideSelected) {
 			this.resetFilteredItems();
 		}
+    if (this._ngSelect.editableSearchTerm) {
+      this._ngSelect.searchTerm = null;
+    }
 	}
 
 	findByLabel(term: string) {
@@ -253,6 +256,10 @@ export class ItemsList {
 		if (this._ngSelect.hideSelected) {
 			this._filteredItems = this.filteredItems.filter((x) => this.selectedItems.indexOf(x) === -1);
 		}
+
+    if (this._ngSelect.editableSearchTerm && !multiple) {
+      this._ngSelect.setSearchTermFromItems();
+    }
 	}
 
 	private _showSelected(item: NgOption) {

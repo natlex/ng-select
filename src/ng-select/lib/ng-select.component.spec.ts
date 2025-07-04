@@ -1496,7 +1496,7 @@ describe('NgSelectComponent', () => {
 				const options = document.querySelectorAll<HTMLElement>('.ng-dropdown-panel .ng-option');
 				const marked = document.querySelectorAll<HTMLElement>('.ng-dropdown-panel .ng-option-marked')[0];
 
-				expect(options.length).toBe(17);
+				expect(options.length).toBe(18);
 				expect(marked.innerText).toBe('k');
 				expect(marked.offsetTop).toBeGreaterThanOrEqual(180);
 			});
